@@ -1,31 +1,5 @@
 import randomdata from "../utils/randomdata"
-
-class AutomationPractice{
-    async openUrl(){
-    await browser.url("http://automationpractice.com/index.php")
-    await browser.maximizeWindow()
-    }
-    get login(){
-        return $("//a[@class='login']")
-    }
-    async clickLogin(){
-        await this.login.click()
-    }
-    get email(){
-       return  $("//input[@class='is_required validate account_input form-control']")
-    }
-    async setEmail(emailAddress:string){
-    await this.email.setValue(randomdata.generateEmail())
-    }
-    get createAcc(){
-       return  $("//i[@class='icon-user left']")
-    }
-    async clickCreateAccount(){
-    await this.createAcc.click()
-    }
-    get pageHeader(){
-        return $("//h1[@class='page-heading']")
-    }
+class PersonalInformation{
     get title(){
         return $("//input[@id='id_gender2']")
     }
@@ -121,16 +95,16 @@ class AutomationPractice{
         return $("//input[@id='alias']")
     }
     async setAliasAdd(myaddress:string){
-    await this.aliasAdd.setValue(myaddress)
-    }
-    get register(){
-        return $("//span[text()='Register']")
-    }
-    async clickRegister(){
-        await this.register.click()
-    }
-    get headerElement(){
-        return $("//h1[@class='page-heading']")
-    }
-  }
-export default new AutomationPractice()
+        await this.aliasAdd.setValue(myaddress)
+        }
+        get register(){
+            return $("//span[text()='Register']")
+        }
+        async clickRegister(){
+            await this.register.click()
+        }
+        get headerElement(){
+            return $("//h1[@class='page-heading']")
+        }
+}
+export default new PersonalInformation()
