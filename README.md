@@ -12,6 +12,8 @@
 
 <p>In AutomationPractice.json , all the test data is kept</p>
 
+<p>It also supports cross browser execution(chrome,MicrosoftEdge)</p>
+
 ### commands to run in cmd
 
 npm install

@@ -5,11 +5,8 @@ Feature: To palce order from Automation Practice Website
         Then  I must be navigated to my account page with header as "AUTHENTICATION"
         When I enter email address and click on create account
         Then I should see page header text as "CREATE AN ACCOUNT"
-        When I enter title as Mrs,Firstname ,Lastname ,password,Date of Birth and check for Receive special offers from our partners!
-        When I enter company and address,city,state,country and Postal code,mobile number,any alias address
-        And I click on Register button
-        Then I should see header text as "MY ACCOUNT"
-        Then I should see the url contains my-account
+        When I enter all required feilds and click on register button
+        Then I should see header text as "MY ACCOUNT" and the url contains my-account
         When I click on Women item and add dress to cart
         Then I should see product added message as "Product successfully added to your shopping cart"
         When I click on proceed to checkout

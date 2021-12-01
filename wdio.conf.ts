@@ -43,26 +43,24 @@ export const config: WebdriverIO.Config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 2,
+    maxInstances: 5,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-    capabilities: [{
-
-        // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-        // grid with only 5 firefox instances available you can make sure that not more than
-        // 5 instances get started at a time.
-        maxInstances: 5,
-        //
-        browserName: 'chrome',
-        acceptInsecureCerts: true
-        // If outputDir is provided WebdriverIO can capture driver session logs
-        // it is possible to configure which logTypes to include/exclude.
-        // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
-        // excludeDriverLogs: ['bugreport', 'server'],
-    }],
+    capabilities: [
+        {
+            maxInstances: 2,
+            browserName: 'chrome',
+            acceptInsecureCerts: true
+        },
+        {
+            maxInstances: 2,
+            browserName: 'MicrosoftEdge',
+            acceptInsecureCerts: true
+        }
+    ],
     //
     // ===================
     // Test Configurations
@@ -110,7 +108,7 @@ export const config: WebdriverIO.Config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver'],
+    services: ['selenium-standalone'],
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -263,11 +261,11 @@ export const config: WebdriverIO.Config = {
      * @param {number}             result.duration  duration of scenario in milliseconds
      * @param {Object}             context          Cucumber World object
      */
-     afterStep: async function (step, scenario, result, context) {
+    afterStep: async function (step, scenario, result, context) {
         if (!result.passed) {
-           await browser.takeScreenshot();
-          }
-     },
+            await browser.takeScreenshot();
+        }
+    },
     /**
      *
      * Runs after a Cucumber Scenario.

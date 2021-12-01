@@ -12,7 +12,7 @@ class CreateAccount {
         await this.createAcc.click()
     }
     get pageHeader() {
-        return $("//h1[@class='page-heading']")
+        return $(".page-heading")
     }
 }
 export default new CreateAccount()

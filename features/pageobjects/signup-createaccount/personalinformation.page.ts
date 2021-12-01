@@ -1,4 +1,4 @@
-import randomdata from "../utils/randomdata"
+
 class PersonalInformation {
     get title() {
         return $("//input[@id='id_gender2']")
@@ -6,18 +6,15 @@ class PersonalInformation {
     async clickTitle() {
         await this.title.click()
     }
-
     get fName() {
         return $("//input[@id='customer_firstname']")
-    }
-    async setFname(Firstname: string) {
-        await this.fName.setValue(Firstname)
     }
     get lName() {
         return $("//input[@id='customer_lastname']")
     }
-    async setLname(lastname: string) {
-        await this.lName.setValue(lastname)
+    async setName(name: { firstName: string, lastName: string }) {
+        await this.fName.setValue(name.firstName)
+        await this.lName.setValue(name.lastName)
     }
     get pswd() {
         return $("//input[@id='passwd']")
@@ -28,26 +25,22 @@ class PersonalInformation {
     get dd() {
         return $("//select[@id='days']")
     }
-    async selectDd(date: string) {
-        await this.dd.selectByIndex(4)
-    }
     get mm() {
         return $("//select[@id='months']")
-    }
-    async selectMm(month: string) {
-        await this.mm.selectByAttribute('value', 5)
     }
     get yy() {
         return $("//select[@id='years']")
     }
-    async selectYy(year: string) {
+    async selectDateOfBirth(dateOfBirth: { day: string, month: string, year: string }) {
+        await this.dd.selectByIndex(4)
+        await this.mm.selectByAttribute('value', 5)
         await this.yy.selectByIndex(4)
     }
-    get check() {
+    get checkSpecialOffers() {
         return $("//input[@id='optin']")
     }
-    async clickCheck() {
-        await this.check.click()
+    async clickCheckSpecialOffers() {
+        await this.checkSpecialOffers.click()
     }
     get compName() {
         return $("//input[@id='company']")
@@ -58,32 +51,24 @@ class PersonalInformation {
     get add() {
         return $("//input[@id='address1']")
     }
-    async setAdd(address: string) {
-        await this.add.setValue(address)
-    }
     get cityName() {
         return $("//input[@id='city']")
-    }
-    async setCity(city: string) {
-        await this.cityName.setValue(city)
     }
     get stateName() {
         return $("//select[@id='id_state']")
     }
-    async selectState(state: string) {
-        await this.stateName.selectByIndex(3)
-    }
     get countryName() {
         return $("//select[@id='id_country']")
-    }
-    async selectCountry(country: string) {
-        await this.countryName.selectByIndex(1)
     }
     get postalcode() {
         return $("//input[@id='postcode']")
     }
-    async setPincode(pincode: string) {
-        await this.postalcode.setValue(pincode)
+    async setAddress(address: { address1: string, city: string, state: string, country: string, postalCode: string }) {
+        await this.add.setValue(address.address1)
+        await this.cityName.setValue(address.city)
+        await this.stateName.selectByIndex(3)
+        await this.countryName.selectByIndex(1)
+        await this.postalcode.setValue(address.postalCode)
     }
     get mobNumber() {
         return $("//input[@id='phone_mobile']")
