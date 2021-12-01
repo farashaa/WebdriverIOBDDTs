@@ -1,11 +1,11 @@
-class Address{
-    get addressHeader(){
+class Address {
+    get addressHeader() {
         return $(".page-heading")
     }
-    get deliveryAddress(){
+    get deliveryAddress() {
         return ("//label[@for='id_address_delivery']")
     }
-    get checkOut(){
+    get checkOut() {
         return $("//button[@name='processAddress']")
     }
 

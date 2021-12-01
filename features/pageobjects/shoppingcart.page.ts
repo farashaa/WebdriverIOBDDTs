@@ -1,8 +1,8 @@
-class ShoppingCart{
-    get shoppingCart(){
+class ShoppingCart {
+    get shoppingCart() {
         return $("#cart_title")
     }
-    get checkOut(){
+    get checkOut() {
         return $(".button.btn.btn-default.standard-checkout.button-medium")
     }
 }

@@ -1,5 +1,5 @@
-class MyAccount{
-    get WomenItem(){
+class MyAccount {
+    get WomenItem() {
         return $("//a[@class='sf-with-ul']")
     }
 }

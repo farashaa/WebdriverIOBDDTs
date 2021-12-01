@@ -1,8 +1,8 @@
-class Order{
- get ConfirmOrder(){
+class Order {
+    get ConfirmOrder() {
         return $("//span[text()='I confirm my order']")
     }
-    get orderConfirmed(){
+    get orderConfirmed() {
         return $("//h1")
     }
 }

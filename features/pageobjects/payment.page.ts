@@ -1,8 +1,8 @@
-class Payment{
-    get paymentHeader(){
+class Payment {
+    get paymentHeader() {
         return $("//h1")
     }
-    get Payment(){
+    get Payment() {
         return $(".bankwire")
     }
 }

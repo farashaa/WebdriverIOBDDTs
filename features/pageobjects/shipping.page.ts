@@ -1,11 +1,11 @@
-class Shipping{
-    get shippingPage(){
+class Shipping {
+    get shippingPage() {
         return $("//h1")
     }
-    get termsAndConditions(){
+    get termsAndConditions() {
         return $("#cgv")
-    } 
-    get checkOut(){
+    }
+    get checkOut() {
         return $("//button[@name='processCarrier']")
     }
 }
