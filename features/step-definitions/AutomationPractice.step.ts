@@ -1,61 +1,46 @@
 import { Given, When, Then } from '@wdio/cucumber-framework';
 import faker from "faker"
 import AutomationPracticeData from '../testdata/AutomationPractice.json'
-import signinPage from '../pageobjects/signin.page';
-import createaccountPage from '../pageobjects/createaccount.page';
-import personalinformationPage from '../pageobjects/personalinformation.page';
-import myaccountPage from '../pageobjects/myaccount.page';
-import womenPage from '../pageobjects/women.page';
-import shoppingcartPage from '../pageobjects/shoppingcart.page';
-import addressPage from '../pageobjects/address.page';
-import shippingPage from '../pageobjects/shipping.page';
-import paymentPage from '../pageobjects/payment.page';
-import orderPage from '../pageobjects/order.page';
+import signinPage from '../pageobjects/signup-createaccount/signin.page';
+import createaccountPage from '../pageobjects/signup-createaccount/createaccount.page';
+import personalinformationPage from '../pageobjects/signup-createaccount/personalinformation.page';
+import myaccountPage from '../pageobjects/myAccount/myaccount.page';
+import womenPage from '../pageobjects/myAccount/women.page';
+import shoppingcartPage from '../pageobjects/cart/shoppingcart.page';
+import addressPage from '../pageobjects/cart/address.page';
+import shippingPage from '../pageobjects/cart/shipping.page';
+import paymentPage from '../pageobjects/cart/payment.page';
+import orderPage from '../pageobjects/cart/order.page';
 Given(/^I am on the home page of automation practice website$/, async () => {
   await signinPage.openUrl()
 });
 When(/^I click on sign in button$/, async () => {
-  signinPage.clickLogin()
+  await signinPage.clickLogin()
 });
 Then(/^I must be navigated to my account page with header as \"([^\"]*)\"$/, async (authentication) => {
   await expect(signinPage.AuthHeader).toHaveText(authentication)
 });
-
 When(/^I enter email address and click on create account$/, async () => {
   await createaccountPage.setEmail(faker.internet.email())
   await createaccountPage.clickCreateAccount()
 });
 Then(/^I should see page header text as \"([^\"]*)\"$/, async (createanaccount) => {
-
   await expect(createaccountPage.pageHeader).toHaveText(createanaccount)
 });
-When(/^I enter title as Mrs,Firstname ,Lastname ,password,Date of Birth and check for Receive special offers from our partners!$/, async () => {
+When(/^I enter all required feilds and click on register button$/, async () => {
   await personalinformationPage.clickTitle()
-  await personalinformationPage.setFname(AutomationPracticeData.FirstName)
-  await personalinformationPage.setLname(AutomationPracticeData.LastName)
-  await personalinformationPage.setPswd(AutomationPracticeData.password)
-  await personalinformationPage.selectDd(AutomationPracticeData.DateOfBirth.dd)
-  await personalinformationPage.selectMm(AutomationPracticeData.DateOfBirth.mm)
-  await personalinformationPage.selectYy(AutomationPracticeData.DateOfBirth.yy)
-  await personalinformationPage.clickCheck()
-});
-When(/^I enter company and address,city,state,country and Postal code,mobile number,any alias address$/, async () => {
+  await personalinformationPage.setName(AutomationPracticeData.name)
+  await personalinformationPage.setPswd(faker.internet.password())
+  await personalinformationPage.selectDateOfBirth(AutomationPracticeData.DateOfBirth)
+  await personalinformationPage.clickCheckSpecialOffers()
   await personalinformationPage.setCompany(AutomationPracticeData.company)
-  await personalinformationPage.setAdd(AutomationPracticeData.address)
-  await personalinformationPage.setCity(AutomationPracticeData.city)
-  await personalinformationPage.selectState(AutomationPracticeData.state)
-  await personalinformationPage.selectState(AutomationPracticeData.country)
-  await personalinformationPage.setPincode(AutomationPracticeData.postalCode)
+  await personalinformationPage.setAddress(AutomationPracticeData.address)
   await personalinformationPage.setMobNumber(AutomationPracticeData.mobNumber)
   await personalinformationPage.setAliasAdd(AutomationPracticeData.aliasAdd)
-});
-When(/^I click on Register button$/, async () => {
   await personalinformationPage.clickRegister()
 });
-Then(/^I should see header text as \"([^\"]*)\"$/, async (pageHeader) => {
-  await expect(personalinformationPage.headerElement).toHaveText(pageHeader)
-});
-Then(/^I should see the url contains my-account$/, async () => {
+Then(/^I should see header text as \"([^\"]*)\" and the url contains my-account$/, async (myaccount) => {
+  await expect(personalinformationPage.headerElement).toHaveText(myaccount)
   await expect(browser).toHaveUrlContaining("my-account")
 });
 When(/^I click on Women item and add dress to cart$/, async () => {

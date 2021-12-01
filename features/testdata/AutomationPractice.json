@@ -1,18 +1,21 @@
 {
-    "FirstName": "abc",
-    "LastName": "def",
-    "password": "uvwxyz",
+    "name": {
+        "firstName": "abc",
+        "lastName": "def"
+    },
     "DateOfBirth": {
-        "dd": "4",
-        "mm": "May",
-        "yy": "2016"
+        "day": "4",
+        "month": "May",
+        "year": "2016"
     },
     "company": "xyz",
-    "address": "1st line",
-    "city": "city",
-    "state": "Kansas",
-    "country": "United States",
-    "postalCode": "11111",
+    "address": {
+        "address1": "1st line",
+        "city": "city",
+        "state": "Kansas",
+        "country": "United States",
+        "postalCode": "11111"
+    },
     "mobNumber": "123456789",
     "aliasAdd": "My address"
 }
