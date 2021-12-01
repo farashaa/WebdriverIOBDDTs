@@ -6,7 +6,7 @@ Feature: To palce order from Automation Practice Website
         When I enter email address and click on create account
         Then I should see page header text as "CREATE AN ACCOUNT"
         When I enter title as Mrs,Firstname ,Lastname ,password,Date of Birth and check for Receive special offers from our partners!
-       When I enter company and address,city,state,country and Postal code,mobile number,any alias address
+        When I enter company and address,city,state,country and Postal code,mobile number,any alias address
         And I click on Register button
         Then I should see header text as "MY ACCOUNT"
         Then I should see the url contains my-account
